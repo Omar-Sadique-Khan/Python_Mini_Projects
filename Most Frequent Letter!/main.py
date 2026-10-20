@@ -26,17 +26,26 @@ def most_frequent_word(word):
     # Print Reports
 
     for letter, count in dict_count.items():
-        print(f'{letter} used this many {count} times.')
-
+        if count > 1:
+            print(f'{letter} used this many {count} times.')
+        else:
+            print(f'{letter} used this many {count} time.')
     # Find Max Count Letters
 
     max_count = max(dict_count.values())
-    print(max_count)
+    max_letters = []
+
+    for letter, count in dict_count.items():
+        if count == max_count:
+            max_letters.append(letter)
 
     # Report Results
+    print(f'The most frequently used letter is {max_letters}.'
+          f'And it is used {max_count} times.')
 
+    return max_letters, max_count
 
 #🎯 Main
 
 for word in random_words:
-    most_frequent_word(word)
+    results = most_frequent_word(word)
